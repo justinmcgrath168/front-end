@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Check, Eye, EyeOff, Lock } from "lucide-react";
 
@@ -13,8 +13,8 @@ import { toast } from "sonner";
 
 export default function ResetPasswordPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const token = searchParams.get("token");
+  // const searchParams = useSearchParams();
+  // const token = searchParams.get("token");
 
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -106,22 +106,22 @@ export default function ResetPasswordPage() {
   };
 
   // Check if token exists
-  if (!token) {
-    return (
-      <div className="text-center">
-        <h1 className="text-2xl font-bold">Invalid or Expired Link</h1>
-        <p className="mt-4 text-gray-600">
-          This password reset link is invalid or has expired. Please request a
-          new one.
-        </p>
-        <div className="mt-8">
-          <Button asChild>
-            <Link href="/forgot-password">Request New Link</Link>
-          </Button>
-        </div>
-      </div>
-    );
-  }
+  // if (!token) {
+  //   return (
+  //     <div className="text-center">
+  //       <h1 className="text-2xl font-bold">Invalid or Expired Link</h1>
+  //       <p className="mt-4 text-gray-600">
+  //         This password reset link is invalid or has expired. Please request a
+  //         new one.
+  //       </p>
+  //       <div className="mt-8">
+  //         <Button asChild>
+  //           <Link href="/forgot-password">Request New Link</Link>
+  //         </Button>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   if (isSuccess) {
     return (
