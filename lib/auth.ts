@@ -2,12 +2,12 @@
 // This file would typically contain NextAuth.js configuration
 // For this example, we'll create a simplified version
 
-import { User } from "@/types/user";
+import { UserProfiles } from "@/types/user";
 
 export type AuthStatus = "loading" | "authenticated" | "unauthenticated";
 
 export interface Session {
-  user: User | null;
+  user: UserProfiles | null;
   expires: string;
 }
 

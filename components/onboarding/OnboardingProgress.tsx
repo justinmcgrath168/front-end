@@ -14,10 +14,7 @@ interface OnboardingProgressProps {
   currentStep: string;
 }
 
-export function OnboardingProgress({
-  steps,
-  currentStep,
-}: OnboardingProgressProps) {
+export function OnboardingProgress({ steps }: OnboardingProgressProps) {
   return (
     <div className="space-y-4">
       {steps.map((step, index) => (

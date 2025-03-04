@@ -153,7 +153,7 @@ export function Pricing({ id, className }: SectionProps) {
             Simple, Transparent Pricing
           </h2>
           <p className="mt-4 text-xl text-gray-600">
-            Choose the plan that's right for your business
+            Choose the plan that&apos;s right for your business
           </p>
         </div>
 
