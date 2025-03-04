@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -179,67 +179,69 @@ export default function TwoFactorPage() {
   }
 
   return (
-    <div className="max-w-md mx-auto">
-      <div className="text-center">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
-          <Shield className="h-8 w-8 text-primary" />
-        </div>
-        <h1 className="text-2xl font-bold">Two-Factor Authentication</h1>
-        <p className="mt-2 text-gray-600">
-          We&apos;ve sent a 6-digit verification code to your phone. Enter the
-          code below to verify your identity.
-        </p>
-      </div>
-
-      <div className="mt-8">
-        <div className="flex justify-between mb-8">
-          {code.map((digit, index) => (
-            <div key={index} className="w-12">
-              <Input
-                ref={inputRefs[index]}
-                type="text"
-                inputMode="numeric"
-                maxLength={6}
-                value={digit}
-                onChange={(e) => handleChange(index, e.target.value)}
-                onKeyDown={(e) => handleKeyDown(index, e)}
-                className="text-center text-xl h-14 font-mono"
-                disabled={isVerifying || isSuccess}
-              />
-            </div>
-          ))}
-        </div>
-
-        <div className="flex items-center justify-between mb-4">
-          <p className="text-sm text-gray-500">
-            Code expires in {formatTime(timeLeft)}
+    <Suspense>
+      <div className="max-w-md mx-auto">
+        <div className="text-center">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
+            <Shield className="h-8 w-8 text-primary" />
+          </div>
+          <h1 className="text-2xl font-bold">Two-Factor Authentication</h1>
+          <p className="mt-2 text-gray-600">
+            We&apos;ve sent a 6-digit verification code to your phone. Enter the
+            code below to verify your identity.
           </p>
+        </div>
+
+        <div className="mt-8">
+          <div className="flex justify-between mb-8">
+            {code.map((digit, index) => (
+              <div key={index} className="w-12">
+                <Input
+                  ref={inputRefs[index]}
+                  type="text"
+                  inputMode="numeric"
+                  maxLength={6}
+                  value={digit}
+                  onChange={(e) => handleChange(index, e.target.value)}
+                  onKeyDown={(e) => handleKeyDown(index, e)}
+                  className="text-center text-xl h-14 font-mono"
+                  disabled={isVerifying || isSuccess}
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-between mb-4">
+            <p className="text-sm text-gray-500">
+              Code expires in {formatTime(timeLeft)}
+            </p>
+            <Button
+              variant="link"
+              size="sm"
+              onClick={resendCode}
+              disabled={isResending || timeLeft > 0 || isVerifying || isSuccess}
+              className="p-0 h-auto"
+            >
+              {isResending ? "Sending..." : "Resend code"}
+            </Button>
+          </div>
+
           <Button
-            variant="link"
-            size="sm"
-            onClick={resendCode}
-            disabled={isResending || timeLeft > 0 || isVerifying || isSuccess}
-            className="p-0 h-auto"
+            onClick={verifyCode}
+            className="w-full"
+            disabled={code.some((d) => !d) || isVerifying || isSuccess}
           >
-            {isResending ? "Sending..." : "Resend code"}
+            {isVerifying ? (
+              <>
+                <span className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                Verifying...
+              </>
+            ) : (
+              "Verify"
+            )}
           </Button>
         </div>
-
-        <Button
-          onClick={verifyCode}
-          className="w-full"
-          disabled={code.some((d) => !d) || isVerifying || isSuccess}
-        >
-          {isVerifying ? (
-            <>
-              <span className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-              Verifying...
-            </>
-          ) : (
-            "Verify"
-          )}
-        </Button>
       </div>
-    </div>
+    </Suspense>
   );
 }

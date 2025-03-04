@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Check, Eye, EyeOff, Lock } from "lucide-react";
@@ -144,106 +144,108 @@ export default function ResetPasswordPage() {
   }
 
   return (
-    <div>
-      <div className="text-center">
-        <h1 className="text-2xl font-bold">Create New Password</h1>
-        <p className="mt-2 text-gray-600">
-          Please enter a new password for your account
-        </p>
-      </div>
-
-      <div className="mt-8">
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="space-y-2">
-            <Label htmlFor="password">New Password</Label>
-            <div className="relative">
-              <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-              <Input
-                id="password"
-                name="password"
-                type={showPassword ? "text" : "password"}
-                value={formData.password}
-                onChange={handleChange}
-                placeholder="Enter new password"
-                className={`pl-10 pr-10 ${
-                  formErrors.password ? "border-red-500" : ""
-                }`}
-                required
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-3 text-gray-400 hover:text-gray-600"
-              >
-                {showPassword ? (
-                  <EyeOff className="h-4 w-4" />
-                ) : (
-                  <Eye className="h-4 w-4" />
-                )}
-              </button>
-            </div>
-            {formErrors.password && (
-              <p className="text-sm text-red-500">{formErrors.password}</p>
-            )}
-            <PasswordStrengthIndicator password={formData.password} />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="confirmPassword">Confirm Password</Label>
-            <div className="relative">
-              <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-              <Input
-                id="confirmPassword"
-                name="confirmPassword"
-                type={showConfirmPassword ? "text" : "password"}
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                placeholder="Confirm new password"
-                className={`pl-10 pr-10 ${
-                  formErrors.confirmPassword ? "border-red-500" : ""
-                }`}
-                required
-              />
-              <button
-                type="button"
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute right-3 top-3 text-gray-400 hover:text-gray-600"
-              >
-                {showConfirmPassword ? (
-                  <EyeOff className="h-4 w-4" />
-                ) : (
-                  <Eye className="h-4 w-4" />
-                )}
-              </button>
-            </div>
-            {formErrors.confirmPassword && (
-              <p className="text-sm text-red-500">
-                {formErrors.confirmPassword}
-              </p>
-            )}
-          </div>
-
-          <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? (
-              <>
-                <span className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                Resetting...
-              </>
-            ) : (
-              "Reset Password"
-            )}
-          </Button>
-
-          <p className="text-center text-sm text-gray-600">
-            <Link
-              href="/login"
-              className="font-medium text-primary hover:underline"
-            >
-              Return to login
-            </Link>
+    <Suspense>
+      <div>
+        <div className="text-center">
+          <h1 className="text-2xl font-bold">Create New Password</h1>
+          <p className="mt-2 text-gray-600">
+            Please enter a new password for your account
           </p>
-        </form>
+        </div>
+
+        <div className="mt-8">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-2">
+              <Label htmlFor="password">New Password</Label>
+              <div className="relative">
+                <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <Input
+                  id="password"
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  value={formData.password}
+                  onChange={handleChange}
+                  placeholder="Enter new password"
+                  className={`pl-10 pr-10 ${
+                    formErrors.password ? "border-red-500" : ""
+                  }`}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-3 text-gray-400 hover:text-gray-600"
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-4 w-4" />
+                  ) : (
+                    <Eye className="h-4 w-4" />
+                  )}
+                </button>
+              </div>
+              {formErrors.password && (
+                <p className="text-sm text-red-500">{formErrors.password}</p>
+              )}
+              <PasswordStrengthIndicator password={formData.password} />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="confirmPassword">Confirm Password</Label>
+              <div className="relative">
+                <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <Input
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  type={showConfirmPassword ? "text" : "password"}
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  placeholder="Confirm new password"
+                  className={`pl-10 pr-10 ${
+                    formErrors.confirmPassword ? "border-red-500" : ""
+                  }`}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute right-3 top-3 text-gray-400 hover:text-gray-600"
+                >
+                  {showConfirmPassword ? (
+                    <EyeOff className="h-4 w-4" />
+                  ) : (
+                    <Eye className="h-4 w-4" />
+                  )}
+                </button>
+              </div>
+              {formErrors.confirmPassword && (
+                <p className="text-sm text-red-500">
+                  {formErrors.confirmPassword}
+                </p>
+              )}
+            </div>
+
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? (
+                <>
+                  <span className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                  Resetting...
+                </>
+              ) : (
+                "Reset Password"
+              )}
+            </Button>
+
+            <p className="text-center text-sm text-gray-600">
+              <Link
+                href="/login"
+                className="font-medium text-primary hover:underline"
+              >
+                Return to login
+              </Link>
+            </p>
+          </form>
+        </div>
       </div>
-    </div>
+    </Suspense>
   );
 }
