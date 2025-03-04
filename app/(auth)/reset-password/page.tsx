@@ -99,6 +99,7 @@ export default function ResetPasswordPage() {
       toast(
         "Failed to reset password. Please try again or request a new link."
       );
+      console.log(error);
     } finally {
       setIsLoading(false);
     }

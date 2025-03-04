@@ -186,8 +186,8 @@ export default function TwoFactorPage() {
         </div>
         <h1 className="text-2xl font-bold">Two-Factor Authentication</h1>
         <p className="mt-2 text-gray-600">
-          We've sent a 6-digit verification code to your phone. Enter the code
-          below to verify your identity.
+          We&apos;ve sent a 6-digit verification code to your phone. Enter the
+          code below to verify your identity.
         </p>
       </div>
 

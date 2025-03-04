@@ -219,7 +219,7 @@ function Integrations({ onComplete }: { onComplete: () => void }) {
 
         <div className="mt-4 text-center">
           <p className="text-sm text-gray-600">
-            Don't see your software?{" "}
+            Don&apos;t see your software?{" "}
             <Link href="/integrations" className="text-primary hover:underline">
               Browse all integrations
             </Link>
@@ -373,7 +373,7 @@ export default function OnboardingPage() {
           Welcome to DentalSync
         </h1>
         <p className="text-gray-600 mt-2">
-          Let's get your account set up so you can start using DentalSync
+          Let&apos;s get your account set up so you can start using DentalSync
         </p>
       </div>
 

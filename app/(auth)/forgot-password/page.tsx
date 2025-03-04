@@ -37,6 +37,7 @@ export default function ForgotPasswordPage() {
       //   variant: "destructive",
       // });
       toast("Something went wrong. Please try again.");
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -50,13 +51,14 @@ export default function ForgotPasswordPage() {
         </div>
         <h1 className="text-2xl font-bold">Check your email</h1>
         <p className="mt-4 text-gray-600">
-          We've sent a password reset link to <strong>{email}</strong>. Please
-          check your inbox and follow the instructions to reset your password.
+          We&apos;ve sent a password reset link to <strong>{email}</strong>.
+          Please check your inbox and follow the instructions to reset your
+          password.
         </p>
         <div className="mt-8">
           <p className="text-sm text-gray-500 mb-4">
-            Didn't receive the email? Check your spam folder or request a new
-            link.
+            Didn&apos;t receive the email? Check your spam folder or request a
+            new link.
           </p>
           <Button
             variant="outline"
@@ -78,7 +80,7 @@ export default function ForgotPasswordPage() {
       <div className="text-center">
         <h1 className="text-2xl font-bold">Reset your password</h1>
         <p className="mt-2 text-gray-600">
-          Enter your email address and we'll send you a link to reset your
+          Enter your email address and we&apos;ll send you a link to reset your
           password
         </p>
       </div>

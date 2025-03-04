@@ -54,7 +54,9 @@ function TestimonialCard({
         <Quote className="h-8 w-8" />
       </div>
       <blockquote className="flex-grow">
-        <p className="text-gray-700 italic leading-relaxed">"{quote}"</p>
+        <p className="text-gray-700 italic leading-relaxed">
+          &quot;{quote}&quot;
+        </p>
       </blockquote>
       <div className="mt-6 flex items-center">
         <div className="flex-shrink-0">

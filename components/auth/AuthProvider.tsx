@@ -5,7 +5,7 @@ import {
   useState,
   ReactNode,
 } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { AuthState, AuthStatus, Session } from "@/lib/auth";
 import { UserProfiles } from "@/types/user";
 
@@ -51,7 +51,6 @@ const mockSession: Session = {
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [state, setState] = useState<AuthState>(initialState);
-  const router = useRouter();
   const pathname = usePathname();
 
   // Simulate fetching session on mount

@@ -47,6 +47,7 @@ export default function LoginPage() {
       //   variant: "destructive",
       // });
       toast("Invalid Email or password. Please try again.");
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -156,7 +157,7 @@ export default function LoginPage() {
           </Button>
 
           <p className="text-center text-sm text-gray-600">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link
               href="/signup"
               className="font-medium text-primary hover:underline"

@@ -61,6 +61,7 @@ export default function SignUpPage() {
       //   variant: "destructive",
       // });
       toast("There was a problem creating your account. Please try again.");
+      console.log(error);
     } finally {
       setIsLoading(false);
     }

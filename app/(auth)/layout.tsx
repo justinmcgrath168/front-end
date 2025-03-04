@@ -48,9 +48,9 @@ export default function AuthLayout({
           {/* Testimonial */}
           <div className="relative z-10 mt-auto bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
             <blockquote className="text-white/90 italic">
-              "DentalSync has transformed how our multi-location practice
+              &quot;DentalSync has transformed how our multi-location practice
               operates. The seamless integration between our clinics, labs, and
-              suppliers has reduced administrative overhead by 40%."
+              suppliers has reduced administrative overhead by 40%.&quot;
             </blockquote>
             <div className="mt-4 flex items-center">
               <div className="h-10 w-10 rounded-full bg-white/20 flex items-center justify-center">
