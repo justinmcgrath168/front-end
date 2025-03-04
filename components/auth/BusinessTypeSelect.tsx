@@ -1,5 +1,3 @@
-// src/components/auth/BusinessTypeSelect.tsx
-
 import {
   Select,
   SelectContent,

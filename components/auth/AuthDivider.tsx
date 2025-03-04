@@ -1,4 +1,3 @@
-// src/components/auth/AuthDivider.tsx
 export function AuthDivider() {
   return (
     <div className="relative my-6">

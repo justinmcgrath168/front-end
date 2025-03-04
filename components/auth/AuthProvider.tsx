@@ -1,5 +1,3 @@
-// src/components/auth/AuthProvider.tsx
-
 import {
   createContext,
   useContext,

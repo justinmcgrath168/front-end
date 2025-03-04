@@ -1,4 +1,3 @@
-// src/app/(auth)/two-factor/page.tsx
 "use client";
 
 import { useState, useEffect, useRef } from "react";

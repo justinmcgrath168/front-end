@@ -1,4 +1,3 @@
-// src/app/(marketing)/page.tsx
 import { Metadata } from "next";
 import {
   Hero,
